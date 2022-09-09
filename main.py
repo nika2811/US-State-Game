@@ -12,7 +12,6 @@ data = pandas.read_csv("50_states.csv")
 states = data["state"].tolist()
 
 guessed_state = []
-missing_state = []
 
 score = 0
 while score < 50:
@@ -28,9 +27,7 @@ while score < 50:
         score += 1
     elif user_input == "Exit":
         # save missing states
-        for state in states:
-            if state not in guessed_state:
-                missing_state.append(state)
+        missing_state = [state for state in states if state not in guessed_state]
         break
 
 screen.exitonclick()
